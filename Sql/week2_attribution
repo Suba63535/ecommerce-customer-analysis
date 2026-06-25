@@ -1,0 +1,15 @@
+CREATE DATABASE ecommerce_analysis;
+USE ecommerce_analysis;
+SELECT * FROM customer_journey;
+SELECT *, ROW_NUMBER() OVER (
+    PARTITION BY UserID
+    ORDER BY Timestamp
+) AS journey_step
+FROM customer_journey;
+SELECT * FROM ( SELECT *,
+           ROW_NUMBER() OVER (
+               PARTITION BY UserID
+               ORDER BY Timestamp
+           ) AS rn
+    FROM customer_journey) t WHERE rn = 1;
+    SELECT UserID, COUNT(*) AS touchpoints, 1.0 / COUNT(*) AS linear_weight FROM customer_journey GROUP BY UserID;
