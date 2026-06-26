@@ -1,0 +1,10 @@
+CREATE DATABASE ecommerce_analysis;
+USE ecommerce_analysis;
+show tables;
+SELECT * FROM customer_journey;
+show columns from customer_journey;
+SELECT * FROM customer_journey LIMIT 5;
+SELECT COUNT(DISTINCT SessionID) AS Total_Sessions FROM customer_journey;
+SELECT COUNT(DISTINCT UserID) AS Total_Users FROM customer_journey;
+SELECT SUM(Purchased) AS Total_Purchases FROM customer_journey;
+SELECT ROUND((SUM(Purchased)*100.0)/COUNT(DISTINCT SessionID),2) AS Purchase_Rate FROM customer_journey;
