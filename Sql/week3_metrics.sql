@@ -8,3 +8,8 @@ SELECT COUNT(DISTINCT SessionID) AS Total_Sessions FROM customer_journey;
 SELECT COUNT(DISTINCT UserID) AS Total_Users FROM customer_journey;
 SELECT SUM(Purchased) AS Total_Purchases FROM customer_journey;
 SELECT ROUND((SUM(Purchased)*100.0)/COUNT(DISTINCT SessionID),2) AS Purchase_Rate FROM customer_journey;
+SELECT AVG(TimeOnPage_seconds) AS Avg_Time FROM customer_journey;
+SELECT AVG(ItemsInCart) AS Avg_Items FROM customer_journey;
+SELECT ReferralSource, SUM(Purchased) AS Purchases FROM customer_journey GROUP BY ReferralSource;
+SELECT DeviceType, SUM(Purchased) AS Purchases FROM customer_journey GROUP BY DeviceType;
+SELECT Country, SUM(Purchased) AS Purchases FROM customer_journey GROUP BY Country;
